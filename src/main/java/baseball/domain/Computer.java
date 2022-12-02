@@ -10,8 +10,11 @@ public class Computer {
         this.numbers = numbers;
     }
 
-    private boolean compareValue(int value, int index) {
-        return numbers.get(index) == value;
+    public boolean hasValue(int value) {
+        return numbers.contains(value);
     }
 
+    public boolean compareValue(int index, int value) {
+        return numbers.get(index) == value;
+    }
 }
