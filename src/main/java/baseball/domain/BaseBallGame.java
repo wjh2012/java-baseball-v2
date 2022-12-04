@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import static baseball.domain.BaseBallResult.*;
-
 import baseball.BaseBallRandomNumberGenerator;
 import java.util.Arrays;
 import java.util.List;
@@ -22,23 +20,14 @@ public class BaseBallGame {
 
         for (int i = 0; i < 3; i++) {
             int value = numbers.get(i);
-            judgeNumber(i, value);
+            if (computer.hasValue(value)) {
+                if (computer.compareValue(i, value)) {
+                    strike += 1;
+                    continue;
+                }
+                ball += 1;
+            }
         }
-
         return Arrays.asList(ball, strike);
-    }
-
-    private BaseBallResult judgeNumber(int index, int value) {
-        if (computer.hasValue(value)) {
-            return judgeBallAndStrike(index, value);
-        }
-        return NONE;
-    }
-
-    private BaseBallResult judgeBallAndStrike(int index, int value) {
-        if (computer.compareValue(index, value)) {
-            return STRIKE;
-        }
-        return BALL;
     }
 }
