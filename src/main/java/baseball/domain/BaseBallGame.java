@@ -1,7 +1,9 @@
 package baseball.domain;
 
+import static baseball.domain.ScoreResult.*;
+
 import baseball.BaseBallRandomNumberGenerator;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGame {
@@ -14,20 +16,26 @@ public class BaseBallGame {
         computer = new Computer(numberMaker.makeNumbers());
     }
 
-    public List<Integer> guess(List<Integer> numbers) {
-        int ball = 0;
-        int strike = 0;
+    public List<ScoreResult> guess(List<Integer> numbers) {
+        List<ScoreResult> scoreResults = new ArrayList<>();
 
-        for (int i = 0; i < 3; i++) {
-            int value = numbers.get(i);
-            if (computer.hasValue(value)) {
-                if (computer.compareValue(i, value)) {
-                    strike += 1;
-                    continue;
-                }
-                ball += 1;
-            }
+        numbers.forEach(number -> scoreResults.add(
+                judgeNumber(numbers.indexOf(number), number)));
+
+        return scoreResults;
+    }
+
+    private ScoreResult judgeNumber(int index, int value) {
+        if (computer.hasValue(value)) {
+            return judgeBallAndStrike(index, value);
         }
-        return Arrays.asList(ball, strike);
+        return NONE;
+    }
+
+    private ScoreResult judgeBallAndStrike(int index, int value) {
+        if (computer.compareValue(index, value)) {
+            return STRIKE;
+        }
+        return BALL;
     }
 }
