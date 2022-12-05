@@ -14,7 +14,7 @@ public class Computer {
         return numbers.contains(value);
     }
 
-    public boolean compareValue(int index, int value) {
+    public boolean hasValueAndLocation(int index, int value) {
         return numbers.get(index) == value;
     }
 }
