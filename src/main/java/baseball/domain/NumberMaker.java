@@ -1,7 +1,6 @@
 package baseball.domain;
 
 import baseball.BaseBallNumberGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class NumberMaker {
         this.baseBallNumberGenerator = baseBallNumberGenerator;
     }
 
-    public List<Integer> makeNumbers(){
+    public List<Integer> makeNumbers() {
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < NUMBER_SIZE) {
             int randomNumber = baseBallNumberGenerator.generate();
@@ -24,9 +23,5 @@ public class NumberMaker {
             }
         }
         return numbers;
-    }
-
-    private int makeOneNumber(){
-        return baseBallNumberGenerator.generate();
     }
 }

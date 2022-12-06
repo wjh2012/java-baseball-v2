@@ -11,7 +11,7 @@ class BaseBallGameTest {
     @Test
     void guess() {
         BaseBallGame baseBallGame = new BaseBallGame();
-        List<ScoreResult> result = baseBallGame.guess(List.of(1,2,3));
+        List<ScoreResult> result = baseBallGame.guess(List.of(1, 2, 3));
 
         Assertions.assertThat(ScoreResult.values()).contains(result.get(0));
     }

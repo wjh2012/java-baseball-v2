@@ -1,8 +1,7 @@
 package baseball.domain;
 
-public enum BaseBallResult {
-
-    STRIKE,
+public enum ScoreResult {
     BALL,
+    STRIKE,
     NONE
 }

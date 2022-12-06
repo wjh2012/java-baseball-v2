@@ -25,9 +25,12 @@ public class BaseBallController {
 
     private void play() {
         outputView.requestNumber();
+        String rawInput = inputView.requestNumber();
+        List<Integer> input = convert(rawInput);
+        baseBallGame.guess(input);
     }
 
-    private List<Integer> stringToInteger(String input) {
+    private List<Integer> convert(String input) {
         try {
             return Arrays.stream(input.split(""))
                     .map(Integer::parseInt)

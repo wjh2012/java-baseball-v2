@@ -2,9 +2,9 @@ package baseball.view;
 
 public class OutputView {
 
-    private static String BALL = "볼";
-    private static String STRIKE = "스트라이크";
-    private static String NOTHING = "낫싱";
+    private static final String BALL = "볼";
+    private static final String STRIKE = "스트라이크";
+    private static final String NOTHING = "낫싱";
 
     public void greetings() {
         System.out.println("숫자 야구 게임을 시작합니다.");
